@@ -27,7 +27,7 @@ MAX_RETRIES                 = 10
 google_static_map_URL       = 'http://maps.googleapis.com/maps/api/staticmap?'                + \
                                   'maptype=hybrid&'                                           + \
                                   'center=<LAT>,<LNG>&'                                       + \
-                                  'size=400x400&'                                             + \
+                                  'size=360x360&'                                             + \
                                   'markers=size:mid|color:blue|<LAT>,<LNG>&'                  + \
                                   '&style=feature:road|visibility:off&'                       + \
                                   'key=' + keys.google_api_key_server + '&'                   + \
@@ -95,3 +95,11 @@ if place != None:
    print place['formatted_address'] + ' ' + str(place['geometry']['location']['lat']) + ',' + str(place['geometry']['location']['lng'])
 
    get_maps(str(place['geometry']['location']['lat']), str(place['geometry']['location']['lng']))
+
+   tweet = 'Jumping at ' + place['formatted_address'] + ' (' + str(place['geometry']['location']['lat']) + ',' +  str(place['geometry']['location']['lng']) + ')'
+
+   # Connect to Twitter
+   api = twitter.Api(keys.consumer_key, keys.consumer_secret, keys.access_token, keys.access_token_secret)
+
+   # Post tweet text and image
+   status = api.PostMedia(tweet, PWD + '/zoom.gif')

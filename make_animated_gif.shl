@@ -1,4 +1,4 @@
 #!/bin/sh
 
-convert -delay 20 -loop 0 maps/* ~/public_html/zoom.gif
-rm maps/*
+convert -delay 20 -loop 0 /home/amarriner/python/zoom/maps/* /home/amarriner/python/zoom/zoom.gif
+rm /home/amarriner/python/zoom/maps/*
