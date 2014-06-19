@@ -1,0 +1,4 @@
+#!/bin/sh
+
+convert -delay 20 -loop 0 maps/* ~/public_html/zoom.gif
+rm maps/*
